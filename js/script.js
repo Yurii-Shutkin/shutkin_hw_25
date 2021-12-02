@@ -1,42 +1,36 @@
 (() => {
     
-    const getSum = (num = 0, increaseCount = 0, decreaseCount = 0, getCount = 0) => {
+    const getSum = (num = 0) => {
+
+        const callCounter = {
+            increase: increase = 0,
+            decrease: decrease = 0,
+            get: get = 0,
+        }
 
         const methods = {
-            increase: closerNum => {
-                return {
-                    result: num += closerNum,
-                    counter: ++increaseCount,
-                }
+            increase: closureNum => {
+                callCounter.increase++;
+                return num += closureNum;
             },
 
-            decrease: closerNum => {
-                return {
-                    result: num -= closerNum,
-                    counter: ++decreaseCount,
-                }
+            decrease: closureNum => {
+                callCounter.decrease++;
+                return num -= closureNum;
             },
 
             get: () => {
-                return {
-                    result: num,
-                    counter: ++getCount,
-                }
+                callCounter.get++;
+                return num;
             },
 
-            getStatistic: () => {
-                return {
-                    increase: increaseCount,
-                    decrease: decreaseCount,
-                    get: getCount,
-                }
-            },
+            getStatistic: () => callCounter,
 
             resetValues: () => {
                 num = 0;
-                increaseCount = 0;
-                decreaseCount = 0;
-                getCount = 0;
+                callCounter.increase = 0;
+                callCounter.decrease = 0;
+                callCounter.get = 0;
             }
         }
 
@@ -53,7 +47,7 @@
     sum.increase(2);
     sum.decrease(8);
 
-    console.log(sum.get().result);
+    console.log(sum.get());
 
     console.log(sum.getStatistic());
 
