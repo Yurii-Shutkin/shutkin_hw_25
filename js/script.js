@@ -3,9 +3,9 @@
     const getSum = (num = 0) => {
 
         const callCounter = {
-            increase: increase = 0,
-            decrease: decrease = 0,
-            get: get = 0,
+            increase: 0,
+            decrease: 0,
+            get: 0,
         }
 
         const methods = {
