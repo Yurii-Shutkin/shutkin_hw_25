@@ -6,6 +6,7 @@
             increase: 0,
             decrease: 0,
             get: 0,
+            getStatistic: 0,
         }
 
         const methods = {
@@ -24,13 +25,17 @@
                 return num;
             },
 
-            getStatistic: () => callCounter,
+            getStatistic: () => {
+                callCounter.getStatistic++;
+                return callCounter;
+            },
 
             resetValues: () => {
                 num = 0;
                 callCounter.increase = 0;
                 callCounter.decrease = 0;
                 callCounter.get = 0;
+                callCounter.getStatistic = 0;
             }
         }
 
